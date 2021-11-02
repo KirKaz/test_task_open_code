@@ -1,0 +1,67 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        function do_login()
+        {
+            var email=$("#email").val();
+            var pass=$("#password").val();
+            if(email!="" && password!="")
+            {
+                $.ajax
+                ({
+                    type:'post',
+                    url:'do_login.php',
+                    data:{
+                        do_login:"do_login",
+                        password:pass,
+                        email:email
+
+                    },
+                    success:function(response) {
+                        if(response.trim()=="success")
+                        {
+                            window.location.href="index.php";
+                        }
+                        else
+                        {
+                            alert("Неверно введены данные");
+                        }
+                    }
+                });
+            }
+
+            else
+            {
+                alert("Пожалуйста, заполните все поля");
+            }
+
+            return false;
+        }
+    </script>
+</head>
+<body>
+<div class="form_div">
+        <form method="post" onsubmit="return do_login();">
+            <p><strong>Ваша почта</strong></p>
+            <input type="text" name="email" id="email" placeholder="Введите Email">
+            <br>
+            <p><strong>Ваш пароль</strong></p>
+            <input type="password" name="password" id="password" placeholder="***********">
+            <br>
+            <p>
+            <input class="button" type="submit" name="login" value="Войти">
+            </p>
+            <p>У вас еще нет аккаунта? <a href="register.php">Зарегистрируйтесь</a></p>
+        </form>
+
+
+</div>
+</body>
+</html>
