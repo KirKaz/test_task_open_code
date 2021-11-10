@@ -67,7 +67,7 @@ else{
 
     <p>
     <p><strong>Текст статьи</strong></p>
-    <textarea class="input_textarea" name="full_text" value="<?php echo @$data['full_text'] ?>"></textarea>
+    <textarea class="input_textarea" name="full_text"><?php echo @$data['full_text'] ?></textarea>
     </p>
 
 
