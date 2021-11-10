@@ -5,8 +5,6 @@ session_start();
 
 $_SESSION = array();
 
-// Если требуется уничтожить сессию, также необходимо удалить сессионные cookie.
-// Замечание: Это уничтожит сессию, а не только данные сессии!
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(session_name(), '', time() - 42000,
@@ -15,7 +13,6 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-// Наконец, уничтожаем сессию.
 session_destroy();
 header('location:login.html');
 ?>

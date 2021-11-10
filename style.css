@@ -35,9 +35,9 @@ body
     width: 400px;
 }
 
-.input_text_full{
-    height: 150px ;
+.input_textarea{
     width: 400px;
+    height: 200px;
 }
 
 .article{

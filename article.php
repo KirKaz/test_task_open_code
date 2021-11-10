@@ -1,11 +1,10 @@
 <?php
 require 'connect.php';
-
-$connection = connect();
 session_start();
 if (isset($_SESSION['logged_user'])){
-
+    $data = $_POST;
     $page = $_GET['article_id'];
+    $user = $_SESSION['logged_user'];
 
     $query = pg_query($connection, "SELECT * FROM news WHERE article_id= '$page'");
     $article = pg_fetch_assoc($query);
@@ -16,6 +15,8 @@ if (isset($_SESSION['logged_user'])){
         '<p>' . $article['create_time'] . '</p></div>';
     echo '<form action="list.php" class = "button_form">';
     echo '<button type="submit" class = "button" >Назад</button>';
+    if ($user['login'] == pg_fetch_assoc(pg_query($connection, "SELECT login FROM users WHERE user_id = $article[author_id]"))['login'])
+        echo '<a class = "button" href="editor.php?article_id='.$_GET['article_id'].'">Редактировать</a>';
     echo '</form>';
 
 }
