@@ -29,7 +29,8 @@ if (isset($_SESSION['logged_user'])){
             echo array_shift($errors) ;
         }
         else{
-        $pg = pg_query($connection, "INSERT INTO news (title, announcement, full_text, author_id) VALUES ('$data[title]', '$data[announcement]', '$data[full_text]', '$user[user_id]')");
+        $pg = pg_query($connection, "INSERT INTO news (title, announcement, full_text, author_id) 
+        VALUES ('$data[title]', '$data[announcement]', '$data[full_text]', '$user[user_id]')");
         echo 'Новость добавлена. Просмотрите <a href="list.php">полный список</a> новостей';
         }
     }

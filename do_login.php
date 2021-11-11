@@ -1,7 +1,6 @@
 <?php
 require 'connect.php';
 session_start();
-
 if(isset($_POST['do_login'])) {
 
     $select_data = pg_query($connection, "SELECT * FROM users WHERE mail='$_POST[email]' AND pass='$_POST[password]'");
@@ -16,4 +15,3 @@ if(isset($_POST['do_login'])) {
     }
     exit();
 }
-

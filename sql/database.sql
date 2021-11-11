@@ -9,7 +9,7 @@ create table users(
 create table news(
     article_id serial not null unique,
     title varchar,
-    create_time timestamp not null,
+    create_time timestamp default current_timestamp,
     author_id bigint not null,
     announcement varchar(200),
     full_text text,

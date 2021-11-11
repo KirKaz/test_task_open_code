@@ -27,7 +27,7 @@ $list = pg_query($connection, "SELECT * FROM news order by article_id DESC");
 while ($article = pg_fetch_assoc($list)){
     echo '<div class = "article_div">' .
         '<h3><a href = article.php?article_id='.$article['article_id'].'>' . $article['title'] . ' </h3></a><br>' .
-        $article['create_time'] . '<br>' .
+        date('d-m-Y D', strtotime($article['create_time'])). '<br>' .
         $article['announcement'] . '<br>' .
         pg_fetch_assoc(pg_query($connection, "SELECT login FROM users WHERE user_id = $article[author_id]"))['login'] . '</div>';
 }
