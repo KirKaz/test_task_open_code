@@ -12,7 +12,7 @@ if (isset($_SESSION['logged_user'])){
         '<h3>' . $article['title'] . ' </h3><br>' .
         '<p><b>' . pg_fetch_assoc(pg_query($connection, "SELECT login FROM users WHERE user_id = $article[author_id]"))['login'] . '</b></p>' .
         '<p>' . $article['full_text'] . '</p>' .
-        '<p>' . $article['create_time'] . '</p></div>';
+        '<p>' . date('d-m-Y D', strtotime($article['create_time'])) . '</p></div>';
     echo '<form action="list.php" class = "button_form">';
     echo '<button type="submit" class = "button" >Назад</button>';
     if ($user['login'] == pg_fetch_assoc(pg_query($connection, "SELECT login FROM users WHERE user_id = $article[author_id]"))['login'])
