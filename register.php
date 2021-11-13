@@ -38,9 +38,10 @@ if (isset($data['do_signup'])){
         $errors[] = 'Такой логин уже существует';
     }
 
-    if (!preg_match("/[a-zA-Z\d]$/", $data['password'])) {
+    if (!(preg_match("/^[a-zA-Z\d]{0,}$/", $data['password']))) {
         $errors[] = 'В пароле допустимы только латинскик буквы и цифры';
     }
+
 
     if (!empty($errors)) {
         echo array_shift($errors) ;
